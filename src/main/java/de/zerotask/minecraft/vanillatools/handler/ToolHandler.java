@@ -3,33 +3,32 @@ package de.zerotask.minecraft.vanillatools.handler;
 import mcjty.lib.tools.ItemStackTools;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraft.item.ItemTool;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /**
- * The event handler used to disable vanilla bows.
+ * The event handler used to disable all vanilla tools.
  *
  * @author Sven Lechner (SirWindfield)
  * @version 1.0
  */
-public class BowHandler {
+public class ToolHandler {
 
     /**
-     * Gets called each time a player starts to use a bow.
+     * Gets called each time the user tries to break blocks with his tool.
      *
      * @param event The event.
      */
     @SubscribeEvent(priority = EventPriority.HIGHEST)
-    public void onItemUsage(PlayerInteractEvent.RightClickItem event) {
-        // TODO: not sure if machines can trigger this event
+    public void onItemUse(PlayerEvent.BreakSpeed event) {
         EntityPlayer player = event.getEntityPlayer();
         if (player != null) {
-            ItemStack bow = player.getHeldItemMainhand();
-            if (!ItemStackTools.isEmpty(bow)) {
-                if (bow.getItem() instanceof ItemBow) {
+            ItemStack stack = player.getHeldItemMainhand();
+            if (!ItemStackTools.isEmpty(stack)) {
+                if (stack.getItem() instanceof ItemTool) {
                     event.setCanceled(true);
                 }
             }

@@ -1,7 +1,10 @@
 package de.zerotask.minecraft.vanillatools.reference;
 
 /**
- * Created by Sven on 09.05.17.
+ * An {@code interface} holding the mod information (used as reference).
+ *
+ * @author Sven Lechner (SirWindfield)
+ * @version 1.0
  */
 public interface IReference {
 

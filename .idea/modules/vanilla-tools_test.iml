@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id="vanillatools:test" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$" external.system.id="GRADLE" external.system.module.group="com.yourname.modid" external.system.module.type="sourceSet" external.system.module.version="1.0" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6" inherit-compiler-output="true">
+<module external.linked.project.id="vanilla-tools:test" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="GRADLE" external.system.module.group="de.zerotask.minecraft.vanillatools" external.system.module.type="sourceSet" external.system.module.version="1.0" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$/src/test">
-      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
+    <content url="file://$MODULE_DIR$/../../src/test">
+      <sourceFolder url="file://$MODULE_DIR$/../../src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/test/resources" type="java-test-resource" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="vanillatools_main" />
-    <orderEntry type="module" module-name="vanillatools_api" />
+    <orderEntry type="module" module-name="vanilla-tools_main" />
+    <orderEntry type="module" module-name="vanilla-tools_api" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -28,6 +28,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="Gradle: deobf.com.github.mcjty:compatlayer:1.10-0.2.8" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -84,17 +85,17 @@
     <orderEntry type="library" name="Gradle: com.paulscode:librarylwjglopenal:20100824" level="project" />
     <orderEntry type="library" name="Gradle: com.paulscode:soundsystem:20120107" level="project" />
     <orderEntry type="library" name="Gradle: net.java.jinput:jinput:2.0.5" level="project" />
-    <orderEntry type="library" name="Gradle: org.lwjgl.lwjgl:lwjgl:2.9.2-nightly-20140822" level="project" />
-    <orderEntry type="library" name="Gradle: org.lwjgl.lwjgl:lwjgl_util:2.9.2-nightly-20140822" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl.lwjgl:lwjgl:2.9.4-nightly-20150209" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl.lwjgl:lwjgl_util:2.9.4-nightly-20150209" level="project" />
     <orderEntry type="library" name="Gradle: java3d:vecmath:1.5.2" level="project" />
     <orderEntry type="library" name="Gradle: org.fusesource.jansi:jansi:1.11" level="project" />
     <orderEntry type="library" name="Gradle: org.scala-lang:scala-actors:2.11.0" level="project" />
     <orderEntry type="library" name="Gradle: net.java.jinput:jinput-platform:natives-linux:2.0.5" level="project" />
     <orderEntry type="library" name="Gradle: net.java.jinput:jinput-platform:natives-windows:2.0.5" level="project" />
     <orderEntry type="library" name="Gradle: net.java.jinput:jinput-platform:natives-osx:2.0.5" level="project" />
-    <orderEntry type="library" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:natives-windows:2.9.2-nightly-20140822" level="project" />
-    <orderEntry type="library" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:natives-linux:2.9.2-nightly-20140822" level="project" />
-    <orderEntry type="library" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:natives-osx:2.9.2-nightly-20140822" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:natives-windows:2.9.4-nightly-20150209" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:natives-linux:2.9.4-nightly-20150209" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl.lwjgl:lwjgl-platform:natives-osx:2.9.4-nightly-20150209" level="project" />
   </component>
-  <component name="TestModuleProperties" production-module="vanillatools_main" />
+  <component name="TestModuleProperties" production-module="vanilla-tools_main" />
 </module>
