@@ -26,16 +26,14 @@ public class SwordHandler {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public void onDamageTaken(LivingHurtEvent event) {
         // only consider any calculations if the source is the player itself
-        if (event.getSource().getDamageType().equals("player")) {
-            Entity entity = event.getSource().getEntity();
-            if (entity instanceof EntityPlayer) {
-                EntityPlayer player = (EntityPlayer) entity;
-                // only look for the main hand
-                ItemStack stack = player.getHeldItemMainhand();
-                if (!ItemStackTools.isEmpty(stack)) {
-                    if (stack.getItem() instanceof ItemSword) {
-                        event.setCanceled(true);
-                    }
+        Entity entity = event.getSource().getEntity();
+        if (entity instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) entity;
+            // only look for the main hand
+            ItemStack stack = player.getHeldItemMainhand();
+            if (!ItemStackTools.isEmpty(stack)) {
+                if (stack.getItem() instanceof ItemSword) {
+                    event.setCanceled(true);
                 }
             }
         }
