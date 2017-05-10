@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  * The event handler used to disable all vanilla swords.
  *
  * @author Sven Lechner (SirWindfield)
- * @version 1.0
+ * @version 1.0.3
  */
 public class SwordHandler {
 
