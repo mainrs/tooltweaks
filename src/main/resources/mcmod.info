@@ -1,7 +1,7 @@
 [
 {
   "modid": "vanillatools",
-  "name": "Vanilla Tools...?",
+  "name": "Vanilla Tools",
   "description": "This mod makes all vanilla tools useless!",
   "version": "${version}",
   "mcversion": "${mcversion}",
