@@ -35,59 +35,15 @@ public class VanillaTools {
     /**
      * The configuration used to read all blacklisted items.
      */
-    private Configuration configuration;
-
-    private final String[] DEFAULT_BLACKLIST = new String[]{
-            "minecraft:wooden_axe",
-            "minecraft:wooden_hoe",
-            "minecraft:wooden_pickaxe",
-            "minecraft:wooden_shovel",
-            "minecraft:wooden_sword",
-            "minecraft:golden_axe",
-            "minecraft:golden_hoe",
-            "minecraft:golden_pickaxe",
-            "minecraft:golden_shovel",
-            "minecraft:golden_sword",
-            "minecraft:iron_axe",
-            "minecraft:iron_hoe",
-            "minecraft:iron_pickaxe",
-            "minecraft:iron_shovel",
-            "minecraft:iron_sword",
-            "minecraft:diamond_axe",
-            "minecraft:diamond_hoe",
-            "minecraft:diamond_pickaxe",
-            "minecraft:diamond_shovel",
-            "minecraft:diamond_sword",
-            "minecraft:bow"
-    };
-
-    private Set<String> blacklist;
-
-    public VanillaTools() {
-        blacklist = new HashSet<>();
-    }
+    private VanillaConfiguration configuration;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        configuration = new Configuration(event.getSuggestedConfigurationFile());
-        try {
-            configuration.load();
-            initConfig();
-        } finally {
-            if(configuration.hasChanged()) {
-                configuration.save();
-            }
-        }
+        configuration = new VanillaConfiguration(new Configuration(event.getSuggestedConfigurationFile()));
     }
 
-    private void initConfig() {
-        String[] list = configuration.get("general", "blacklist", DEFAULT_BLACKLIST, "Specify any tools to disable")
-                .getStringList();
-        Arrays.stream(list).forEach(blacklist::add);
-    }
-
-    public Set<String> getBlacklist() {
-        return blacklist;
+    public VanillaConfiguration getConfiguration() {
+        return configuration;
     }
 
     public static VanillaTools getInstance() {

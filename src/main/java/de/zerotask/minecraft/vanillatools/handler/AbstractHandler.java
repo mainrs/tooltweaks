@@ -10,7 +10,19 @@ import net.minecraft.item.ItemStack;
 abstract class AbstractHandler {
 
     protected boolean isBannedItem(ItemStack stack) {
+        // check for white listed
         String id = stack.getItem().getRegistryName().toString();
-        return VanillaTools.getInstance().getBlacklist().contains(id);
+        boolean whitelisted = VanillaTools.getInstance().getConfiguration().getWhitelist().contains(id);
+        if(whitelisted) {
+            return false;
+        }
+
+        // check if all tools are disabled, no need to check blacklist then
+        boolean allDisabled = VanillaTools.getInstance().getConfiguration().isDisableAllTools();
+        if(allDisabled) {
+            return true;
+        }
+
+        return VanillaTools.getInstance().getConfiguration().getBlacklist().contains(id);
     }
 }
