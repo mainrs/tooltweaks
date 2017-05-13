@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  * @author Sven Lechner (SirWindfield)
  * @version 1.0.3
  */
-public class SwordHandler {
+public class SwordHandler extends AbstractHandler {
 
     /**
      * Gets called when any living creature takes damage.
@@ -33,7 +33,9 @@ public class SwordHandler {
             ItemStack stack = player.getHeldItemMainhand();
             if (!ItemStackTools.isEmpty(stack)) {
                 if (stack.getItem() instanceof ItemSword) {
-                    event.setCanceled(true);
+                    if(isBannedItem(stack)) {
+                        event.setCanceled(true);
+                    }
                 }
             }
         }

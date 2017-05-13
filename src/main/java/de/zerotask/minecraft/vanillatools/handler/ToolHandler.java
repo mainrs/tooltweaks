@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  * @author Sven Lechner (SirWindfield)
  * @version 1.0
  */
-public class ToolHandler {
+public class ToolHandler extends AbstractHandler {
 
     /**
      * Gets called each time the user tries to break blocks with his tool.
@@ -29,7 +29,9 @@ public class ToolHandler {
             ItemStack stack = player.getHeldItemMainhand();
             if (!ItemStackTools.isEmpty(stack)) {
                 if (stack.getItem() instanceof ItemTool) {
-                    event.setCanceled(true);
+                    if(isBannedItem(stack)) {
+                        event.setCanceled(true);
+                    }
                 }
             }
         }

@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  * @author Sven Lechner (SirWindfield)
  * @version 1.0
  */
-public class BowHandler {
+public class BowHandler extends AbstractHandler {
 
     /**
      * Gets called each time a player starts to use a bow.
@@ -30,7 +30,9 @@ public class BowHandler {
             ItemStack bow = player.getHeldItemMainhand();
             if (!ItemStackTools.isEmpty(bow)) {
                 if (bow.getItem() instanceof ItemBow) {
-                    event.setCanceled(true);
+                    if(isBannedItem(bow)) {
+                        event.setCanceled(true);
+                    }
                 }
             }
         }

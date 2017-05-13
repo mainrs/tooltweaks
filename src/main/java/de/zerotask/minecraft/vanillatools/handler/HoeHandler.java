@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  * @author Sven Lechner (SirWindfield)
  * @version 1.0
  */
-public class HoeHandler {
+public class HoeHandler extends AbstractHandler {
 
     /**
      * Gets called each time the player uses the hoe.
@@ -24,7 +24,9 @@ public class HoeHandler {
     public void onHoeing(UseHoeEvent event) {
         if (!ItemStackTools.isEmpty(event.getCurrent())) {
             if (event.getCurrent().getItem() instanceof ItemHoe) {
-                event.setCanceled(true);
+                if(isBannedItem(event.getCurrent())) {
+                    event.setCanceled(true);
+                }
             }
         }
     }
