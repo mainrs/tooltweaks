@@ -4,13 +4,8 @@ import de.zerotask.minecraft.vanillatools.handler.BowHandler;
 import de.zerotask.minecraft.vanillatools.handler.HoeHandler;
 import de.zerotask.minecraft.vanillatools.handler.SwordHandler;
 import de.zerotask.minecraft.vanillatools.handler.ToolHandler;
+import de.zerotask.minecraft.vanillatools.handler.TooltipHandler;
 import de.zerotask.minecraft.vanillatools.reference.IReference;
-
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
@@ -61,5 +56,6 @@ public class VanillaTools {
         MinecraftForge.EVENT_BUS.register(new HoeHandler());
         MinecraftForge.EVENT_BUS.register(new SwordHandler());
         MinecraftForge.EVENT_BUS.register(new ToolHandler());
+        MinecraftForge.EVENT_BUS.register(new TooltipHandler());
     }
 }
