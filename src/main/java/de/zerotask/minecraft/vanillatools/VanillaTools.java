@@ -6,19 +6,11 @@ import de.zerotask.minecraft.vanillatools.handler.SwordHandler;
 import de.zerotask.minecraft.vanillatools.handler.ToolHandler;
 import de.zerotask.minecraft.vanillatools.handler.TooltipHandler;
 import de.zerotask.minecraft.vanillatools.reference.IReference;
-
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
  * A simple mod used to disable all vanilla bows, hoes, swords and tools.
