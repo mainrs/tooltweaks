@@ -19,9 +19,8 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
  * @version 1.0
  */
 @Mod(modid = IReference.ID, version = IReference.VERSION,
-        dependencies = "required-after:compatlayer@[0.2.8,)",
         useMetadata = true,
-        acceptedMinecraftVersions = "[1.10.2,1.12)")
+        acceptedMinecraftVersions = "1.12")
 public class VanillaTools {
 
     @Mod.Instance
