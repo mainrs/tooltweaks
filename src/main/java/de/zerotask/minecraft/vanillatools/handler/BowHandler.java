@@ -1,7 +1,5 @@
 package de.zerotask.minecraft.vanillatools.handler;
 
-import mcjty.lib.tools.ItemStackTools;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
@@ -12,8 +10,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 /**
  * The event handler used to disable vanilla bows.
  *
- * @author Sven Lechner (SirWindfield)
- * @version 1.0
+ * @author Sven Lechner (SirWindfield), Sylvain Viste (Fanged Hex)
+ * @version 1.0.7
  */
 public class BowHandler extends AbstractHandler {
 
@@ -28,7 +26,7 @@ public class BowHandler extends AbstractHandler {
         EntityPlayer player = event.getEntityPlayer();
         if (player != null) {
             ItemStack bow = player.getHeldItemMainhand();
-            if (!ItemStackTools.isEmpty(bow)) {
+            if (!bow.isEmpty()) {
                 if (bow.getItem() instanceof ItemBow) {
                     if(isBannedItem(bow)) {
                         event.setCanceled(true);
