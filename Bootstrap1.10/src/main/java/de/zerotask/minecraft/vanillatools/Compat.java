@@ -1,0 +1,20 @@
+package de.zerotask.minecraft.vanillatools;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+
+public class Compat implements CompatInterface {
+    @Override
+    public boolean isAnItem(ItemStack itemStack) {
+        if (itemStack == null) {
+            return false;
+        }
+        return (itemStack.stackSize > 0);
+    }
+
+    @Override
+    public Entity getSenderEntityFromEvent(LivingHurtEvent event) {
+        return null;
+    }
+}
