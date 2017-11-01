@@ -17,7 +17,7 @@ repositories {
 // Plugin to build forge based mod
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = '1.12-1.0.7-1'
+version = ext.modVersion
 group= "de.zerotask.minecraft.vanillatools" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "vanillatools"
 

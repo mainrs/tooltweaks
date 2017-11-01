@@ -15,7 +15,7 @@ repositories {
 apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the nessasary things for Forge to be setup.
 
-version = "1.0.3"
+version = ext.modVersion
 group= "de.zerotask.minecraft.vanillatools" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "vanillatools"
 
