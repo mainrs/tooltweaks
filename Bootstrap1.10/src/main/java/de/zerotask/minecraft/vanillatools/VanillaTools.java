@@ -14,7 +14,9 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
  * @author Sven Lechner (SirWindfield)
  * @version 1.0
  */
-@Mod(modid = IReference.ID, version = IReference.VERSION)
+@Mod(modid = IReference.ID, version = IReference.VERSION,
+        useMetadata = true,
+        acceptedMinecraftVersions = "[1.10,1.11)")
 public class VanillaTools implements VanillaToolsInterface{
 
     /**

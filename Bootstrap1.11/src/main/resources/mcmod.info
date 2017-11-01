@@ -11,7 +11,7 @@
   "credits": "The Forge and FML guys, for making minecraft a funnier place. And SlimeKnight for porting Iguana to 1.7.10 :D",
   "logoFile": "",
   "screenshots": [],
-  "dependencies": ["compatlayer"],
-  "requiredMods": ["compatlayer"]
+  "dependencies": [],
+  "requiredMods": []
 }
 ]

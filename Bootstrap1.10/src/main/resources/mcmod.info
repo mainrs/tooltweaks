@@ -1,17 +1,17 @@
 [
 {
   "modid": "vanillatools",
-  "name": "Vanilla Tools...?",
+  "name": "Vanilla Tools",
   "description": "This mod makes all vanilla tools useless!",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["Sven Lechner (SirWindfield)"],
+  "authorList": ["Sven Lechner (SirWindfield)", "Sylvain Viste (Fanged Hex)"],
   "credits": "The Forge and FML guys, for making minecraft a funnier place. And SlimeKnight for porting Iguana to 1.7.10 :D",
   "logoFile": "",
   "screenshots": [],
-  "dependencies": ["compatlayer"],
-  "requiredMods": ["compatlayer"]
+  "dependencies": [],
+  "requiredMods": []
 }
 ]

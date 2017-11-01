@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
  */
 @Mod(modid = IReference.ID, version = IReference.VERSION,
         useMetadata = true,
-        acceptedMinecraftVersions = "1.12")
+        acceptedMinecraftVersions = "[1.12,1.13)")
 public class VanillaTools implements VanillaToolsInterface {
 
     @Mod.Instance
