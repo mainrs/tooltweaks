@@ -1,5 +1,6 @@
 package de.zerotask.minecraft.vanillatools.handler;
 
+import de.zerotask.minecraft.vanillatools.VanillaToolsInterface;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
@@ -14,6 +15,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  * @version 1.0.7
  */
 public class BowHandler extends AbstractHandler {
+
+    public BowHandler(VanillaToolsInterface modInstance) {
+        super(modInstance);
+    }
 
     /**
      * Gets called each time a player starts to use a bow.

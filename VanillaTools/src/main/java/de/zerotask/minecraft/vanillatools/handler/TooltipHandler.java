@@ -2,6 +2,7 @@ package de.zerotask.minecraft.vanillatools.handler;
 
 import java.util.List;
 
+import de.zerotask.minecraft.vanillatools.VanillaToolsInterface;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemBow;
@@ -20,6 +21,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  * @version 1.0
  */
 public class TooltipHandler extends AbstractHandler {
+	public TooltipHandler(VanillaToolsInterface modInstance) {
+		super(modInstance);
+	}
+
 	@SubscribeEvent
 	public void onItemToolTip(ItemTooltipEvent event) {
 		// When "we" ask for the item tooltip

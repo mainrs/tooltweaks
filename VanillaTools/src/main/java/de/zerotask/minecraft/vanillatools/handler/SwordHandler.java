@@ -1,5 +1,6 @@
 package de.zerotask.minecraft.vanillatools.handler;
 
+import de.zerotask.minecraft.vanillatools.VanillaToolsInterface;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -15,6 +16,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  * @version 1.0.7
  */
 public class SwordHandler extends AbstractHandler {
+
+    public SwordHandler(VanillaToolsInterface modInstance) {
+        super(modInstance);
+    }
 
     /**
      * Gets called when any living creature takes damage.

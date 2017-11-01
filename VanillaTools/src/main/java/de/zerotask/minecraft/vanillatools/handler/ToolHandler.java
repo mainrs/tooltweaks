@@ -1,5 +1,6 @@
 package de.zerotask.minecraft.vanillatools.handler;
 
+import de.zerotask.minecraft.vanillatools.VanillaToolsInterface;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
@@ -14,6 +15,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  * @version 1.0.7
  */
 public class ToolHandler extends AbstractHandler {
+
+    public ToolHandler(VanillaToolsInterface modInstance) {
+        super(modInstance);
+    }
 
     /**
      * Gets called each time the user tries to break blocks with his tool.

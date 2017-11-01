@@ -1,5 +1,6 @@
 package de.zerotask.minecraft.vanillatools.handler;
 
+import de.zerotask.minecraft.vanillatools.VanillaToolsInterface;
 import net.minecraft.item.ItemHoe;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
@@ -12,6 +13,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  * @version 1.0.7
  */
 public class HoeHandler extends AbstractHandler {
+
+    public HoeHandler(VanillaToolsInterface modInstance) {
+        super(modInstance);
+    }
 
     /**
      * Gets called each time the player uses the hoe.

@@ -21,7 +21,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 @Mod(modid = IReference.ID, version = IReference.VERSION,
         useMetadata = true,
         acceptedMinecraftVersions = "1.12")
-public class VanillaTools {
+public class VanillaTools implements VanillaToolsInterface {
 
     @Mod.Instance
     private static VanillaTools instance;
@@ -51,10 +51,10 @@ public class VanillaTools {
      */
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-        MinecraftForge.EVENT_BUS.register(new BowHandler());
-        MinecraftForge.EVENT_BUS.register(new HoeHandler());
-        MinecraftForge.EVENT_BUS.register(new SwordHandler());
-        MinecraftForge.EVENT_BUS.register(new ToolHandler());
-        MinecraftForge.EVENT_BUS.register(new TooltipHandler());
+        MinecraftForge.EVENT_BUS.register(new BowHandler(this));
+        MinecraftForge.EVENT_BUS.register(new HoeHandler(this));
+        MinecraftForge.EVENT_BUS.register(new SwordHandler(this));
+        MinecraftForge.EVENT_BUS.register(new ToolHandler(this));
+        MinecraftForge.EVENT_BUS.register(new TooltipHandler(this));
     }
 }
