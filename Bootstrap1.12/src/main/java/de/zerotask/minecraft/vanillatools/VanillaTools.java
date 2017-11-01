@@ -26,6 +26,8 @@ public class VanillaTools implements VanillaToolsInterface {
     @Mod.Instance
     private static VanillaTools instance;
 
+    private CompatInterface compatIntance = new Compat();
+
     /**
      * The configuration used to read all blacklisted items.
      */
@@ -34,6 +36,11 @@ public class VanillaTools implements VanillaToolsInterface {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         configuration = new VanillaConfiguration(new Configuration(event.getSuggestedConfigurationFile()));
+    }
+
+    @Override
+    public CompatInterface getCompatInterface() {
+        return this.compatIntance;
     }
 
     public VanillaConfiguration getConfiguration() {

@@ -29,12 +29,12 @@ public class SwordHandler extends AbstractHandler {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public void onDamageTaken(LivingHurtEvent event) {
         // only consider any calculations if the source is the player itself
-        Entity entity = event.getSource().getTrueSource();
+        Entity entity = this.getInstance().getCompatInterface().getSenderEntityFromEvent(event);
         if (entity instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) entity;
             // only look for the main hand
             ItemStack stack = player.getHeldItemMainhand();
-            if (!stack.isEmpty()) {
+            if (this.getInstance().getCompatInterface().isAnItem(stack)) {
                 if (stack.getItem() instanceof ItemSword) {
                     if(isBannedItem(stack)) {
                         event.setCanceled(true);

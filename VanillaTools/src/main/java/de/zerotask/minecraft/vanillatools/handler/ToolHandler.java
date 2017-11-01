@@ -30,7 +30,7 @@ public class ToolHandler extends AbstractHandler {
         EntityPlayer player = event.getEntityPlayer();
         if (player != null) {
             ItemStack stack = player.getHeldItemMainhand();
-            if (!stack.isEmpty()) {
+            if (this.getInstance().getCompatInterface().isAnItem(stack)) {
                 if (stack.getItem() instanceof ItemTool) {
                     if(isBannedItem(stack)) {
                         event.setCanceled(true);

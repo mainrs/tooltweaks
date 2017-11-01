@@ -1,11 +1,16 @@
 package de.zerotask.minecraft.vanillatools.handler;
 
+import de.zerotask.minecraft.vanillatools.CompatInterface;
 import de.zerotask.minecraft.vanillatools.VanillaToolsInterface;
 import net.minecraft.item.ItemStack;
 
 abstract class AbstractHandler {
 
     private VanillaToolsInterface modInstance;
+
+    public VanillaToolsInterface getInstance () {
+        return this.modInstance;
+    }
 
     AbstractHandler(VanillaToolsInterface modInstance) {
         this.modInstance = modInstance;

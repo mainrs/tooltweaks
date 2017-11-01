@@ -31,7 +31,7 @@ public class BowHandler extends AbstractHandler {
         EntityPlayer player = event.getEntityPlayer();
         if (player != null) {
             ItemStack bow = player.getHeldItemMainhand();
-            if (!bow.isEmpty()) {
+            if (this.getInstance().getCompatInterface().isAnItem(bow)) {
                 if (bow.getItem() instanceof ItemBow) {
                     if(isBannedItem(bow)) {
                         event.setCanceled(true);
