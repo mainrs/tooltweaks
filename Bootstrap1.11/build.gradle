@@ -5,13 +5,20 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.1'
     }
 }
+
+plugins{
+    id 'com.github.johnrengelman.shadow' version '2.0.1'
+}
+
 repositories {
     maven { // JEI, McJtyLib and TOP
         url "http://modmaven.k-4u.nl/"
     }
 }
+
 apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the nessasary things for Forge to be setup.
 
@@ -38,7 +45,6 @@ minecraft {
 
 dependencies {
     compile project(":VanillaTools")
-    deobfCompile "com.github.mcjty:compatlayer:1.11.2-0.2.8"
 }
 
 processResources
@@ -60,3 +66,5 @@ processResources
         exclude 'mcmod.info'
     }
 }
+
+build.dependsOn(shadowJar);

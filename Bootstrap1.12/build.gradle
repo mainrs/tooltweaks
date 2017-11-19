@@ -5,7 +5,12 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.1'
     }
+}
+
+plugins{
+    id 'com.github.johnrengelman.shadow' version '2.0.1'
 }
 
 repositories {
@@ -59,3 +64,5 @@ processResources {
         exclude 'mcmod.info'
     }
 }
+
+build.dependsOn(shadowJar);
