@@ -15,6 +15,8 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
 
 /**
  * A class that modify the tooltip of tools and weapons modified by the mod
@@ -27,7 +29,8 @@ public class TooltipHandler extends AbstractHandler {
 		super(modInstance);
 	}
 
-	@SubscribeEvent(priority = EventPriority.LOWEST)
+	@SideOnly(Side.CLIENT)
+	@SubscribeEvent(priority = EventPriority.LOWEST)	
 	public void onItemToolTip(ItemTooltipEvent event) {
 		// When "we" ask for the item tooltip
 		

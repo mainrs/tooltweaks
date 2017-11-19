@@ -12,6 +12,9 @@ public class Compat implements CompatInterface {
 
     @Override
     public Entity getSenderEntityFromEvent(LivingHurtEvent event) {
-        return null;
+        if( event.getSource() == null ) {
+            return null;
+        }
+        return event.getSource().getEntity();
     }
 }
