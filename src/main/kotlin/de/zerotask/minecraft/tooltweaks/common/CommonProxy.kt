@@ -4,12 +4,13 @@ import de.zerotask.minecraft.tooltweaks.common.handler.BowHandler
 import de.zerotask.minecraft.tooltweaks.common.handler.HoeHandler
 import de.zerotask.minecraft.tooltweaks.common.handler.SwordHandler
 import de.zerotask.minecraft.tooltweaks.common.handler.ToolHandler
+import de.zerotask.minecraft.tooltweaks.common.network.PacketHandler
 import net.minecraftforge.common.MinecraftForge
 
 open class CommonProxy {
 
     open fun preInit() {
-        // PacketHandler.init()
+        PacketHandler.init()
     }
 
     open fun init() {
