@@ -1,5 +1,6 @@
 # eclipse
 bin
+classes
 *.launch
 .settings
 .metadata
