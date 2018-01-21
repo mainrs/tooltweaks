@@ -1,5 +1,5 @@
-# vanilla-tools
-A simple mod that lets you disable vanilla tools and weapons.
+# tooltweaks
+A simple mod that lets you disable any tool or weapons by blacklisting their item id.
 
 ## Branch structure
 Each minecraft version has its own branch to not conflict with the build system's cache files.
