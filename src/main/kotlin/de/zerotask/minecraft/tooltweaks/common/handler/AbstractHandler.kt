@@ -42,8 +42,8 @@ open class AbstractHandler {
 
     private fun updateFields() {
         // we need to filter since we do not know if the user actually adds entries or just adds empty lines.
-        blacklist = HashSet(Arrays.asList(*ToolTweaksConfiguration.serverSide.blacklist).filterNotNull())
-        whitelist = HashSet(Arrays.asList(*ToolTweaksConfiguration.serverSide.whitelist).filterNotNull())
+        blacklist = HashSet(Arrays.asList(*ToolTweaksConfiguration.getValidConfiguration().blacklist).filterNotNull())
+        whitelist = HashSet(Arrays.asList(*ToolTweaksConfiguration.getValidConfiguration().whitelist).filterNotNull())
     }
 
     protected fun isBannedItem(stack: ItemStack): Boolean {

@@ -1,7 +1,9 @@
 package de.zerotask.minecraft.tooltweaks.common.config
 
 import de.zerotask.minecraft.tooltweaks.ToolTweaks.MODID
+import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.common.config.Config
+import net.minecraftforge.fml.client.event.ConfigChangedEvent
 
 /**
  * The configuration class used to hold the user defined item ids.
@@ -9,14 +11,19 @@ import net.minecraftforge.common.config.Config
 @Config(modid = MODID, category = "")
 object ToolTweaksConfiguration {
 
-    var clientSide = SidedConfiguration()
-
     @Config.Comment("Server sided configurations.")
     @Config.Name("general")
     @JvmField
-    var serverSide = SidedConfiguration()
+    var clientSide = ConfigurationOptions()
 
-    class SidedConfiguration {
+    /**
+     * This field gets set after synchronization with the server config file.
+     * TODO: @Ignore if PR gets through.
+     */
+    @JvmField
+    var serverSide: ConfigurationOptions? = null
+
+    class ConfigurationOptions {
 
         @Config.Comment("An array holding every item id that should be blacklisted for player usage.")
         @JvmField
@@ -53,5 +60,24 @@ object ToolTweaksConfiguration {
                 "Overwrites blacklist.")
         @JvmField
         var whitelist = arrayOfNulls<String>(0)
+
+        @Config.Comment("If set to true, the server will send its configuration file to the client.")
+        @JvmField
+        var syncConfigToClient = true
+    }
+
+    fun saveServerConfigToClient() {
+        if(serverSide != null) {
+            // update client config to server config. Cast should be safe here!
+            clientSide = serverSide!!
+
+            // trigger config update event to enable set updates within AbstractHandler.
+            // only the first parameter should actually be important.
+            MinecraftForge.EVENT_BUS.post(ConfigChangedEvent.OnConfigChangedEvent(MODID, "", true, false))
+        }
+    }
+
+    fun getValidConfiguration(): ConfigurationOptions {
+        return serverSide?: clientSide
     }
 }
