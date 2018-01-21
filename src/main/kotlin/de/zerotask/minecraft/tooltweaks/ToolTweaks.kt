@@ -15,7 +15,8 @@ import org.apache.logging.log4j.LogManager
         certificateFingerprint = "291a6dbeba80e50ca46c28c20d934b08a84efc8d", // comment out in dev!
         modid = MODID,
         modLanguage = "kotlin",
-        modLanguageAdapter = "de.zerotask.minecraft.tooltweaks.language.KotlinAdapter"
+        modLanguageAdapter = "de.zerotask.minecraft.tooltweaks.language.KotlinAdapter",
+        version = "1.0.7"
 )
 object ToolTweaks {
 
