@@ -21,6 +21,7 @@ class PacketHandler {
         val CHANNEL: SimpleNetworkWrapper = NetworkRegistry.INSTANCE.newSimpleChannel(MODID)
 
         fun init() {
+            // make sure to register the packet message handler as client sided.
             CHANNEL.registerMessage<ConfigurationMessage, IMessage>(ConfigurationMessageHandler::class.java,
                     ConfigurationMessage::class.java, 0, Side.CLIENT)
         }

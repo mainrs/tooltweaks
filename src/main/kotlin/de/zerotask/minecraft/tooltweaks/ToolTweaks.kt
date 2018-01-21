@@ -19,7 +19,7 @@ import org.apache.logging.log4j.Logger
         modid = MODID,
         modLanguage = "kotlin",
         modLanguageAdapter = "de.zerotask.minecraft.tooltweaks.language.KotlinAdapter",
-        version = "1.0.7"
+        version = "1.0.8"
 )
 object ToolTweaks {
 
