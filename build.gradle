@@ -3,8 +3,10 @@ buildscript {
     repositories {
         jcenter()
         maven { url = "http://files.minecraftforge.net/maven" }
+        mavenCentral()
     }
     dependencies {
+        classpath 'com.darylteo.gradle:javassist-plugin:0.2.0'
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
@@ -77,6 +79,39 @@ dependencies {
     runtime "mezz.jei:jei_1.12.2:${jei_version}"
 }
 
+import com.darylteo.gradle.javassist.tasks.TransformationTask
+import com.darylteo.gradle.javassist.transformers.ClassTransformation
+import javassist.*
+import javassist.bytecode.*
+import javassist.bytecode.annotation.*;
+
+class Transformer extends ClassTransformation {
+    @Override
+    void applyTransformations(CtClass clazz) throws Exception {
+        ClassPool pool = ClassPool.getDefault()
+        ClassFile file = clazz.getClassFile()
+        ConstPool constPool = file.getConstPool()
+
+        AnnotationsAttribute attr = new AnnotationsAttribute(constPool, AnnotationsAttribute.visibleTag)
+        Annotation annotation = new Annotation("net.minecraftforge.common.config.Config.Ingore", constPool)
+        attr.addAnnotation(annotation)
+
+        CtField field = clazz.getDeclaredField("INSTANCE")
+        field.getFieldInfo().addAttribute(attr)
+    }
+
+    @Override
+    boolean shouldTransform(CtClass clazz) {
+        return clazz.getName().contains("ToolTweaksConfiguration")
+    }
+}
+
+task transformConfiguration(type: TransformationTask) {
+    // classpath += configurations.compile
+    from sourceSets.main.output
+    transformation = new Transformer()
+}
+
 processResources {
     // this will ensure that this task is redone when the versions change.
     inputs.property "version", project.version
@@ -110,3 +145,4 @@ task signJar(type: SignJar, dependsOn: reobfJar) {
 }
 build.dependsOn signJar     // auto-sign on each build.
 runClient.dependsOn signJar // needed since running kotlin mods actually packages the jar.
+compileKotlin.finalizedBy transformConfiguration
