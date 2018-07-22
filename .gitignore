@@ -1,0 +1,12 @@
+# idea
+out
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+libs
+run
