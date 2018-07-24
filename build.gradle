@@ -11,7 +11,6 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 
-ttversion = "1.0.8"
 group = "de.zerotask.minecraft" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "tooltweaks"
 
@@ -72,7 +71,7 @@ dependencies {
 
 processResources {
     // this will ensure that this task is redone when the versions change.
-    inputs.property "version", project.ttversion
+    // inputs.property "version", project.ttversion
     inputs.property "mcversion", project.minecraft.version
 
     // replace stuff in mcmod.info, nothing else
@@ -80,7 +79,8 @@ processResources {
         include 'mcmod.info'
 
         // replace version and mcversion
-        expand 'version':project.ttversion, 'mcversion':project.minecraft.version
+        // expand 'version':project.ttversion, 'mcversion':project.minecraft.version
+        expand 'mcversion':project.minecraft.version
     }
 
     // copy everything else except the mcmod.info
