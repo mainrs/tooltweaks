@@ -1,0 +1,15 @@
+language: java
+jdk: oraclejdk8
+before_install:
+- openssl aes-256-cbc -K $encrypted_20e26df10405_key -iv $encrypted_20e26df10405_iv
+  -in modding.keystore.enc -out modding.keystore -d
+install: "./gradlew setupCiWorkspace"
+script: "./gradlew build"
+deploy:
+  provider: releases
+  api_key:
+    secure: IvDOCKaZVR3VIvhhhzMSWarvAKFRMy3vdifFByMcaa0fSv+rQvI2d1E/KdOp7/ymdqJkyTYjUoglSM7q1U4WVUMDFY70mtEGmN8BDPY5KJjcfTdpMSoHEMgt3uGKzi5Js4Jr3wg78rWNqrLu9umu3PxSWCCT+vCYX6QisDGO5xm3X0nk98fdoTBhDWixSl3tyD/YOJK0GigY96a9CBQHm+GYItoYOU7yxt06ZmjfRg2FDMEYSVhWKqTMVwY3cR35irQQcUdNhmfAfanEtludpRpalth6yaf+X5b/88E4JMjjnxcCRoJLTXbLsCcFIEx1DeQl3E/dbuSSZBKdxri+ugSc4Ln1SCBhL3k4fD8qWRXW2PoS0TQeIZviETkv7JVX5VClbppwvIGach6TYWOGDqQ6smaf2pUrQLH+LyVOWtg4XfuDzHXjBxncxgQIXrSWKZHsWmZ9gXAd9AeIKFpJMmiMBglqMA2ezRIpv4Q1UaaoXuoMQMowBYfS7tN+lz1x2aR+7bs2DTrSnAfOmWUBXFK5Sc9YrOY7tJNdeCBUC7nS+BrQRYwhp9LfDSUsXKOoPGhI71drrwWvmGti8FC3YnEp3hotdljqmIWrnlYqKScXHxVZeasLTJQi4AocF1L1yyohirqUNu+9em3/i670dVBzj/MlC98brBnG2sL58CQ=
+  file: build/libs/tooltweaks-1.0.8.jar
+  on:
+    repo: SirWindfield/tooltweaks
+    branch: experimental/java
