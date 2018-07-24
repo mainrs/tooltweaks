@@ -7,12 +7,8 @@ import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import scala.actors.threadpool.Arrays;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class AbstractHandler {
@@ -33,7 +29,7 @@ public class AbstractHandler {
 
     @SubscribeEvent
     public void onUpdatedConfiguration(ConfigChangedEvent event) {
-        if(event.getModID() == ToolTweaks.MODID) {
+        if (event.getModID() == ToolTweaks.MODID) {
             ConfigManager.sync(ToolTweaks.MODID, Config.Type.INSTANCE);
             updateFields();
         }

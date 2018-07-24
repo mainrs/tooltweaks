@@ -12,11 +12,26 @@ import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 public class ToolTweaksConfiguration {
 
     @Config.Comment("Client sided configurations.")
-    @Config.Name("general")
+    @Config.Name("General")
     public static SidedConfiguration clientSide = new SidedConfiguration();
 
     @Config.Ignore
     public static SidedConfiguration serverSide;
+
+    public static void saveServerConfigToClient() {
+        if (serverSide != null) {
+            clientSide = serverSide;
+
+            MinecraftForge.EVENT_BUS.post(new ConfigChangedEvent.OnConfigChangedEvent(ToolTweaks.MODID, "", true, false));
+        }
+    }
+
+    public static SidedConfiguration getValidConfiguration() {
+        if (serverSide != null) {
+            return serverSide;
+        }
+        return clientSide;
+    }
 
     public static class SidedConfiguration {
 
@@ -56,20 +71,5 @@ public class ToolTweaksConfiguration {
 
         @Config.Comment("If set to true, the server will send its configuration file to the client.")
         public boolean syncConfigToClient = true;
-    }
-
-    public static void saveServerConfigToClient() {
-        if(serverSide != null) {
-            clientSide = serverSide;
-
-            MinecraftForge.EVENT_BUS.post(new ConfigChangedEvent.OnConfigChangedEvent(ToolTweaks.MODID, "", true, false));
-        }
-    }
-
-    public static SidedConfiguration getValidConfiguration() {
-        if(serverSide != null) {
-            return serverSide;
-        }
-        return clientSide;
     }
 }

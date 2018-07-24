@@ -15,14 +15,14 @@ public class ConfigurationMessage implements IMessage {
 
         int size = buf.readInt();
         String[] array = new String[size];
-        for(int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             array[i] = ByteBufUtils.readUTF8String(buf);
         }
         configuration.blacklist = array;
 
         size = buf.readInt();
         array = new String[size];
-        for(int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             array[i] = ByteBufUtils.readUTF8String(buf);
         }
         configuration.whitelist = array;
@@ -31,12 +31,12 @@ public class ConfigurationMessage implements IMessage {
     @Override
     public void toBytes(ByteBuf buf) {
         buf.writeInt(ToolTweaksConfiguration.getValidConfiguration().blacklist.length);
-        for(String itemId : ToolTweaksConfiguration.getValidConfiguration().blacklist) {
+        for (String itemId : ToolTweaksConfiguration.getValidConfiguration().blacklist) {
             ByteBufUtils.writeUTF8String(buf, itemId);
         }
 
         buf.writeInt(ToolTweaksConfiguration.getValidConfiguration().whitelist.length);
-        for(String itemId : ToolTweaksConfiguration.getValidConfiguration().whitelist) {
+        for (String itemId : ToolTweaksConfiguration.getValidConfiguration().whitelist) {
             ByteBufUtils.writeUTF8String(buf, itemId);
         }
     }

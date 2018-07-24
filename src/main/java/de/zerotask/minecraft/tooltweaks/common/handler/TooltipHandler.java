@@ -14,7 +14,7 @@ public class TooltipHandler extends AbstractHandler {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void onTooltipCreation(ItemTooltipEvent event) {
-        if(isBannedItem(event.getItemStack())) {
+        if (isBannedItem(event.getItemStack())) {
             event.getToolTip().addAll(createTooltip());
         }
     }

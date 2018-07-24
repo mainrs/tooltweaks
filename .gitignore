@@ -4,6 +4,7 @@ out
 
 # gradle
 build
+classes
 .gradle
 
 # other

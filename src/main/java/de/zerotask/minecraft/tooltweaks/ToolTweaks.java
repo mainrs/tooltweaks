@@ -11,43 +11,44 @@ import org.apache.logging.log4j.Logger;
 
 @Mod(
         acceptedMinecraftVersions = ToolTweaks.MCVERSION,
-        certificateFingerprint = "291a6dbeba80e50ca46c28c20d934b08a84efc8d", // comment out in dev!
+        certificateFingerprint = "291a6dbeba80e50ca46c28c20d934b08a84efc8d",
         modid = ToolTweaks.MODID,
-        version = "1.0.7"
+        version = "1.0.8"
 )
 public class ToolTweaks {
 
     public static final String MODID = "tooltweaks";
     public static final String MCVERSION = "[1.12,1.13)";
-    private static final Logger logger = LogManager.getLogger(ToolTweaks.class.getName());
+    public static final Logger LOG = LogManager.getLogger(ToolTweaks.class.getName());
 
     @SidedProxy(
             clientSide = "de.zerotask.minecraft.tooltweaks.client.ClientProxy",
-            serverSide = "de.zerotask.minecraft.tooltweaks.common.CommonProxy"
+            serverSide = "de.zerotask.minecraft.tooltweaks.server.ServerProxy"
     )
     private static CommonProxy proxy;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        LOG.debug("PreInitializing ToolTweaks");
         proxy.preInit();
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        LOG.debug("Initializing ToolTweaks");
         proxy.init();
     }
 
     @Mod.EventHandler
     public void onFingerprintViolation(FMLFingerprintViolationEvent event) {
-        // we wil ignore it in dev environment. FIXME: does not work for kotlin?
-        if(!event.isDirectory()) {
-            logger.warn("FML has failed to verify the integrity of ToolTweaks.");
-            logger.warn("This mod could be running in a development environment, corrupted, or repackaged and " +
+        if (!event.isDirectory()) {
+            LOG.warn("FML has failed to verify the integrity of ToolTweaks.");
+            LOG.warn("This mod could be running in a development environment, corrupted, or repackaged and " +
                     "distributed unofficially.");
-            logger.warn("We do not provide support for modified versions! Proceed at your own risk.");
+            LOG.warn("We do not provide support for modified versions! Proceed at your own risk.");
 
-            logger.warn("Expected fingerprint: ${event.expectedFingerprint}");
-            logger.warn("Source file: ${event.source}");
+            LOG.warn("Expected fingerprint: {}", event.getExpectedFingerprint());
+            LOG.warn("Source file: {}", event.getSource());
         }
     }
 }

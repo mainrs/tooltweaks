@@ -13,11 +13,11 @@ public class BowHandler extends AbstractHandler {
     public void onBowCocked(LivingEntityUseItemEvent event) {
         // Only trigger if the entity is a player, else skeletons wouldn't be able to use the bow.
         Entity entity = event.getEntity();
-        if(entity instanceof EntityPlayer) {
+        if (entity instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) entity;
             ItemStack mainHand = player.getHeldItemMainhand();
 
-            if(!mainHand.isEmpty() && isBannedItem(mainHand)) {
+            if (!mainHand.isEmpty() && isBannedItem(mainHand)) {
                 event.setCanceled(true);
             }
         }

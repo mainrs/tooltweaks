@@ -1,22 +1,19 @@
 buildscript {
-    ext.kotlin_version = '1.2.51'
     repositories {
         jcenter()
         maven { url = "http://files.minecraftforge.net/maven" }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
-apply plugin: 'kotlin'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 
-version = "1.0"
-group = "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "modid"
+version = "1.0.8"
+group = "de.zerotask.minecraft" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "tooltweaks"
 
 sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 compileJava {
@@ -26,7 +23,7 @@ compileJava {
 minecraft {
     version = "1.12.2-14.23.4.2739"
     runDir = "run"
-    
+
     // the mappings can be changed at any time, and must be in the following format.
     // snapshot_YYYYMMDD   snapshot are built nightly.
     // stable_#            stables are built at the discretion of the MCP team.
@@ -36,8 +33,17 @@ minecraft {
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 
+repositories {
+    mavenCentral()
+    jcenter()
+    maven {
+        // location of the maven that hosts JEI files
+        name = "Progwml6 maven"
+        url = "http://dvs1.progwml6.com/files/maven"
+    }
+}
+
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"
@@ -58,7 +64,10 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+    runtime fileTree(dir: 'libs', include: ['*.jar'])
 
+    // just for testing custom items
+    runtime "mezz.jei:jei_1.12.2:${jei_version}"
 }
 
 processResources {
@@ -79,16 +88,21 @@ processResources {
         exclude 'mcmod.info'
     }
 }
-repositories {
-    mavenCentral()
+
+task signJar(type: SignJar, dependsOn: reobfJar) {
+    // Skips if the keyStore property is missing.
+    /*onlyIf {
+        project.hasProperty('keyStore')
+    }*/
+
+    keyStore = project.findProperty('keyStore')
+    alias = project.findProperty('alias')
+    storePass = project.findProperty('storePass')
+    keyPass = project.findProperty('keyPass')
+
+    inputFile = jar.archivePath
+    outputFile = jar.archivePath
 }
-compileKotlin {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-}
-compileTestKotlin {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-}
+
+// Runs this task automatically when build is ran.
+build.dependsOn signJar
