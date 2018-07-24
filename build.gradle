@@ -95,10 +95,19 @@ task signJar(type: SignJar, dependsOn: reobfJar) {
         project.hasProperty('keyStore')
     }*/
 
-    keyStore = project.findProperty('keyStore')
-    alias = project.findProperty('alias')
-    storePass = project.findProperty('storePass')
-    keyPass = project.findProperty('keyPass')
+    def isRunningOnTravis = System.getenv("CI") == "true"
+
+    if (isRunningOnTravis) {
+        keyStore = file("./modding.keystore.enc")
+        alias = System.getenv("keystore_alias")
+        storePass = System.getenv("keystore_password")
+        keyPass = System.getenv("keystore_alias_password")
+    } else if (project.hasProperty("keyStore")) {
+        keyStore = project.findProperty('keyStore')
+        alias = project.findProperty('alias')
+        storePass = project.findProperty('storePass')
+        keyPass = project.findProperty('keyPass')
+    }
 
     inputFile = jar.archivePath
     outputFile = jar.archivePath
